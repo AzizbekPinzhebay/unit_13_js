@@ -325,7 +325,7 @@
         let selected = document.querySelector('.u14-find-station');
         let cout14 = '';
 
-        window.onload = function(){
+       function optionAdd (){
 
             for(let key in a11){
 
@@ -337,27 +337,23 @@
             }
             selected.innerHTML =cout14;
         }
+        optionAdd ();
 
     
-    
-        let out14 = document.querySelector('.out_14');
-        document.querySelector('.u14-btn').onclick = function(){
+    let out14 = document.querySelector('.out_14');
+    document.querySelector('.u14-btn').onclick = function(){
 
-        let select_14 = document.querySelector('.u14-find-station').value;
-      
-        console.log(select_14)
-        for(let key in a11){
+    let select_14 = document.querySelector('.u14-find-station').value;
+  
+            for(let key in a11){
 
-            for(let i = 0; i < a11[key].length; i++){
+            let st = a11[key];
 
-                if(select_14 == a11[key][i]){
-
-                    out14.innerHTML = key;
-                  }
-            }
+            if (st.indexOf(select_14) != -1){
+                out14.innerHTML = key;
+                }
         }
-    }
-
+}
 
 
 // Task 15
