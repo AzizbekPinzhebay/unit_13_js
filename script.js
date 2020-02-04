@@ -345,12 +345,14 @@
 
     let select_14 = document.querySelector('.u14-find-station').value;
   
-            for(let key in a11){
+        for(let key in a11){
 
             let st = a11[key];
-
+               
             if (st.indexOf(select_14) != -1){
+
                 out14.innerHTML = key;
+
                 }
         }
 }
@@ -359,8 +361,88 @@
 // Task 15
 // Добавьте к предыдущему заданию 2 select где пользователь может выбрать 2 станции, и если они на одной ветке - то по нажатию на кнопку будет показано сколько станций между ними (сами станции не включаем. Если это соседние станции - то 0).
 
+    function optionAdder (){
+        let cout15 = '';
+        let sel15_01 = document.querySelector('.u15-find-st01');
+        let sel15_02 = document.querySelector('.u15-find-st02');
+
+        for(let key in a11){
+
+            for(let i = 0; i < a11[key].length; i++){
+
+            cout15 += `<option value"${a11[key][i]}">${a11[key][i]}</option>`;
+
+            }
+        }
+        sel15_01.innerHTML = cout15;
+        sel15_02.innerHTML = cout15;
+    }
+    optionAdder();
+
+    
+
+    let out15 = document.querySelector('.out_15');
+
+    document.querySelector('.u15-btn').onclick = function(){
+
+        let sValue01 = document.querySelector('.u15-find-st01').value;
+        let sValue02 = document.querySelector('.u15-find-st02').value;
+
+            for(let key in a11){
+
+                let st = a11[key];
+                
+                    if (st.indexOf(sValue01) != -1 ){
+
+                        if(st.indexOf(sValue02) != -1){
+                            let sum =  st.indexOf(sValue01) - st.indexOf(sValue02);
+
+                            
+                             
+                            if(sum < 0){
+                                let posNumber = Math.abs(sum);
+                                out15.innerHTML = posNumber-1;
+                             }
+                             else{
+                                 out15.innerHTML = sum-1;
+                             }
+                        }
+
+                    }
+                
+                
+                }
+                
+            }
+           
+
+    
+
+    
+
 // Task 16
 // Добавьте 3 radiobutton.u16-radio которые содержат value = red, green, blue - в соотвтествии с цветом веток метро. Добавьте пустой select.u16-select. При выборе radio - программа должна в select добавлять option с названиями станций метро. Т.е. выбрали radio(value="green") то внутрь select должны быть записаны option со станциями зеленой ветки. Выбрали red - select должен быть очищен и добавлены option со станциями красной ветки.
+
+    let radioBtn = document.querySelectorAll('.u16-radio');
+
+            for(let i = 0; i < radioBtn.length; i++){
+
+                radioBtn[i].onclick = renderSt;
+            }
+
+    function renderSt(){
+        
+        for( let i = 0; i < radioBtn.length; i++){
+
+            if(radioBtn[i].checked == 'red'){
+                console.log('red');
+            }
+        }
+    }
+
+
+
+
 
 // Task 17
 // Создайте массив, который описывает метро киевского метрополитена и обозначаются конечные и станции перехода, выведите его на страницу. Конечные - обозначать 0, перехода - 1.
