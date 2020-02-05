@@ -431,13 +431,30 @@
             }
 
     function renderSt(){
+        let sel16 = document.querySelector('.u16-select');
+        let cout16 = '';
+        sel16innerHTML = '';
         
-        for( let i = 0; i < radioBtn.length; i++){
+        for( let t = 0; t < radioBtn.length; t++){
 
-            if(radioBtn[i].checked == 'red'){
-                console.log('red');
+            if(radioBtn[t].checked){
+               
+                for(let key in a11){
+
+                    if(radioBtn[t].value == key){
+
+                        for(let k = 0; k < a11[key].length; k++){
+
+                            cout16 += `<option value"${a11[key][k]}">${a11[key][k]}</option>`;
+                
+                            }
+                    }
+
+                }
             }
         }
+
+        sel16.innerHTML = cout16;
     }
 
 
@@ -451,6 +468,9 @@
 // 	"red" : [ ['Академгородок', 0] ,...],
 // 	"green" : 
 // }
+
+
+
 // Task 18
 // Выведите на страницу только станции с переходами из массива a17.
 
