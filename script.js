@@ -513,7 +513,7 @@
 
 
         let out19 = document.querySelector('.out_19');
-        let cout19 = '';
+        let cout19 ='';
 
         let asianCountries = {
             "Азербайджан": {
@@ -547,11 +547,39 @@
                     }
          }
 
-         for(let key in asianCountries){
+        for(let key in asianCountries){
 
-            cout19 += `${asianCountries}<br>`;
-         }
-         out19.innerHTML = cout19;
+            for(let kei in asianCountries[key]){
+
+                cout19 += `${asianCountries[key][kei]}<br>`
+            }
+        }
+         
+        out19.innerHTML += cout19;
+
+
 // Task 20
 // Дополните массив из задачи 19 так, чтобы пользователь мог сам выбирать страну в select, а необходимая информация подтягивалась на страницу.
+
+        let selectCountries = document.querySelector('.selectCountries');
+        let out20 = document.querySelector('.out_20');
+     
+        selectCountries.onchange = function(){
+            let cout20 = '';
+            let sValueCountr = selectCountries.value;
+
+            for(let key in asianCountries){
+
+                if(sValueCountr == key){
+                    
+                    for(let kei in asianCountries[key]){
+    
+                        cout20 += `${asianCountries[key][kei]}<br>`
+                    }
+                }
+                
+            }
+               out20.innerHTML = cout20;
+        }
+
 
